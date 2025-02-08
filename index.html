@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elegant French Restaurant</title>
-  <!-- Google Fonts: Playfair Display と Noto Sans JP -->
+  <!-- Google Fonts: Playfair Display and Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- 背景オーバーレイ（セクションごとに色が変化します） -->
+  <!-- Background overlay -->
   <div class="background-overlay"></div>
-  <!-- カスタムカーソル -->
+  <!-- Custom cursor -->
   <div class="cursor"></div>
 
-  <!-- ヘッダー（固定＆モバイル用ハンバーガーメニュー付き） -->
+  <!-- Header with stylish navigation tabs -->
   <header>
     <div class="hamburger">
       <span></span>
@@ -25,44 +25,54 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#about">About us</a></li>
-        <li><a href="#menu">メニュー</a></li>
-        <li><a href="#access">アクセス</a></li>
-        <li><a href="#reservation">予約・問い合わせ</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#access">Access</a></li>
+        <li><a href="#reservation">Reservation</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- メインコンテンツ（各セクションは100vhで全画面表示） -->
+  <!-- Main content sections -->
   <main>
-    <!-- About us セクション -->
+    <!-- About Us section with slider -->
     <section id="about" class="section">
       <div class="content">
-        <h1 class="animate">About us</h1>
-        <p class="animate">私たちの物語へようこそ。</p>
-      </div>
-    </section>
-
-    <!-- メニュー セクション -->
-    <section id="menu" class="section">
-      <div class="content">
-        <h1 class="animate">メニュー</h1>
-        <p class="animate">本日の特選メニューをご覧ください。</p>
-        <div class="menu-images animate">
-          <img src="images/lunch1.png" alt="メニュー画像1">
-          <img src="images/lunch2.png" alt="メニュー画像2">
+        <h1 class="animate">About Us</h1>
+        <div class="slider animate">
+          <img src="images/restaurant_home_image1.png" alt="Restaurant Home Image 1" class="slide active">
+          <img src="images/restaurant_home_image2.png" alt="Restaurant Home Image 2" class="slide">
         </div>
       </div>
     </section>
 
-    <!-- アクセス セクション -->
+    <!-- Menu section with resized images and course description -->
+    <section id="menu" class="section">
+      <div class="content">
+        <h1 class="animate">Menu</h1>
+        <p class="animate">Please enjoy our specially selected courses for today.</p>
+        <div class="menu-images animate">
+          <img src="images/lunch1.png" alt="Menu Image 1">
+          <img src="images/lunch2.png" alt="Menu Image 2">
+        </div>
+        <div class="menu-description animate">
+          <h2>Course Structure</h2>
+          <p>
+            Our course includes an appetizer, main course, and dessert paired with a selection of fine wines.
+            Experience the elegance of French cuisine with every bite.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Access section -->
     <section id="access" class="section">
       <div class="content">
-        <h1 class="animate">アクセス</h1>
-        <p class="animate">〒123-4567 東京都渋谷区○○町1-2-3</p>
+        <h1 class="animate">Access</h1>
+        <p class="animate">1-2-3, Example Town, Shibuya-ku, Tokyo, 123-4567</p>
         <div class="map-container animate">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.123456789012!2d139.7000000!3d35.6895000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1234567890%3A0xabcdef1234567890!2z44CSMjU5LTAwMDAg5p2x5Lqs6YO95p2x5Yy65YyX5Lqs6YO95LiK!5e0!3m2!1sja!2sjp!4v1587654321098!5m2!1sja!2sjp" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.123456789012!2d139.7000000!3d35.6895000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1234567890%3A0xabcdef1234567890!2z44CSMjU5LTAwMDAg5p2x5Lqs6YO95p2x5Yy65YyX5Lqs6YO95LiK!5e0!3m2!1sen!2sus!4v1587654321098!5m2!1sen!2sus" 
             width="600" 
             height="450" 
             style="border:0;" 
@@ -73,20 +83,20 @@
       </div>
     </section>
 
-    <!-- 予約・問い合わせ セクション -->
+    <!-- Reservation section -->
     <section id="reservation" class="section">
       <div class="content">
-        <h1 class="animate">予約・問い合わせ</h1>
-        <p class="animate">ご予約はお電話またはメールでお気軽にお問い合わせください。</p>
+        <h1 class="animate">Reservation</h1>
+        <p class="animate">Please contact us via phone or email to reserve your table.</p>
         <div class="reservation-info animate">
-          <p><strong>電話:</strong> <a href="tel:+810123456789">+81-012-3456-789</a></p>
-          <p><strong>メール:</strong> <a href="mailto:info@frenchrestaurant.com">info@frenchrestaurant.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+810123456789">+81-012-3456-789</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@frenchrestaurant.com">info@frenchrestaurant.com</a></p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- フッター（ソーシャルリンク：Instagram と Twitter） -->
+  <!-- Footer with social links -->
   <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
