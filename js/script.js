@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
   
-  // Slider functionality for About Us section (5秒ごとに切り替え)
+  // Slider functionality for About Us section (change slide every 5 seconds)
   const slides = document.querySelectorAll('.slider .slide');
   let currentSlide = 0;
   if (slides.length > 0) {
@@ -76,58 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
       slides[currentSlide].classList.add('active');
     }, 5000);
   }
-  
-  // Modal for Menu Details
-  const menuModal = document.getElementById('menu-detail-modal');
-  const menuDetailContent = document.querySelector('.menu-detail-content');
-  const closeButton = document.querySelector('.close-button');
-  const menuImages = document.querySelectorAll('.menu-images img');
-  
-  menuImages.forEach(img => {
-    const menuType = img.getAttribute('data-menu');
-    // マウスオーバー時にモーダルを表示
-    img.addEventListener('mouseenter', () => {
-      showMenuModal(menuType);
-    });
-    // マウスアウト時にモーダルを非表示（クリックの場合は close ボタンで閉じる）
-    img.addEventListener('mouseleave', () => {
-      hideMenuModal();
-    });
-    // クリック時もモーダルを表示（モバイル対応）
-    img.addEventListener('click', () => {
-      showMenuModal(menuType);
-    });
-  });
-  
-  function showMenuModal(menuType) {
-    // data-menu の値に応じた詳細情報を表示
-    if(menuType === 'menu1') {
-      menuDetailContent.innerHTML = `
-        <h2>Course Menu 1</h2>
-        <ul>
-          <li>Appetizer: Seasonal Salad</li>
-          <li>Main Course: Pan-seared Fish with Vegetables</li>
-          <li>Dessert: Crème Brûlée</li>
-        </ul>
-      `;
-    } else if(menuType === 'menu2') {
-      menuDetailContent.innerHTML = `
-        <h2>Course Menu 2</h2>
-        <ul>
-          <li>Appetizer: French Onion Soup</li>
-          <li>Main Course: Beef Bourguignon</li>
-          <li>Dessert: Chocolate Mousse</li>
-        </ul>
-      `;
-    } else {
-      menuDetailContent.innerHTML = `<p>No details available.</p>`;
-    }
-    menuModal.style.display = 'block';
-  }
-  
-  function hideMenuModal() {
-    menuModal.style.display = 'none';
-  }
-  
-  closeButton.addEventListener('click', hideMenuModal);
 });
