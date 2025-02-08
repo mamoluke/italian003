@@ -46,20 +46,21 @@
       </div>
     </section>
 
-    <!-- Menu section with resized images and course description -->
+    <!-- Menu section with detailed modal -->
     <section id="menu" class="section">
       <div class="content">
         <h1 class="animate">Menu</h1>
         <p class="animate">Please enjoy our specially selected courses for today.</p>
         <div class="menu-images animate">
-          <img src="images/lunch1.png" alt="Menu Image 1">
-          <img src="images/lunch2.png" alt="Menu Image 2">
+          <!-- data-menu 属性でそれぞれのメニュー詳細を識別 -->
+          <img src="images/lunch1.png" alt="Menu Image 1" data-menu="menu1">
+          <img src="images/lunch2.png" alt="Menu Image 2" data-menu="menu2">
         </div>
         <div class="menu-description animate">
           <h2>Course Structure</h2>
           <p>
-            Our course includes an appetizer, main course, and dessert paired with a selection of fine wines.
-            Experience the elegance of French cuisine with every bite.
+            Our course menus are carefully crafted with an appetizer, main course, and dessert paired with selected wines.
+            Please hover over or click the images above to see the detailed course menu.
           </p>
         </div>
       </div>
@@ -107,6 +108,14 @@
       </a>
     </div>
   </footer>
+
+  <!-- Modal for Menu Details -->
+  <div id="menu-detail-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="menu-detail-content"></div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
