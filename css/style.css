@@ -1,25 +1,31 @@
-/* 全体の基本設定 */
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+/* リセット */
+* {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  color: #333333;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+  cursor: none; /* デフォルトカーソルを非表示 */
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #FFFFF0; /* 初期背景色：アイボリー */
+  color: #333;
   overflow-x: hidden;
 }
 
-/* 背景オーバーレイ */
+/* 背景オーバーレイ（セクションごとに色が変化） */
 .background-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FFFFF0; /* Default ivory */
+  background-color: #FFFFF0;
   transition: background-color 1s ease;
   z-index: -1;
 }
@@ -38,7 +44,70 @@ body {
   z-index: 1000;
 }
 
-/* アニメーション用のテキスト */
+/* ヘッダー＆ナビゲーション */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #666;
+}
+
+/* ハンバーガーメニュー（モバイル用） */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: #333;
+  margin: 3px 0;
+  transition: all 0.3s;
+}
+
+/* 各セクション（100vhの全画面表示） */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.content {
+  max-width: 800px;
+}
+
+/* アニメーション（スクロール時にふわっと現れる） */
 .animate {
   opacity: 0;
   transform: translateY(20px);
@@ -50,29 +119,17 @@ body {
   transform: translateY(0);
 }
 
-/* ヘッダーとナビゲーション */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #f8f8f8;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* フッターの基本スタイル */
+/* フッター */
 footer {
-  background-color: #f8f8f8;
+  background: #f8f8f8;
   padding: 20px 0;
   text-align: center;
-  width: 100%;
-  height: 80px;
-  box-sizing: border-box;
   position: fixed;
   bottom: 0;
+  width: 100%;
+  z-index: 1100;
 }
 
-/* ソーシャルリンク */
 footer .social-links {
   display: flex;
   justify-content: center;
@@ -80,10 +137,9 @@ footer .social-links {
 }
 
 footer .social-links a {
-  display: inline-block;
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 
 footer .social-links a:hover {
@@ -97,447 +153,57 @@ footer .social-links img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ヘッダーとナビゲーション */
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover {
-  color: #666;
-}
-
-/* セクションの基本設定 */
-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-section h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-section p {
-  font-size: 1rem;
-  margin: 0 auto;
-  max-width: 600px;
-  color: #666666;
-  text-align: center;
-}
-
-/* メニューページのスタイル */
-.menu-section {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px;
-}
-
-.menu-category {
-  margin-bottom: 100px;
-  text-align: center;
-}
-
-.menu-category h2 {
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-
-.menu-time {
-  font-size: 18px;
-  color: #666;
-  margin: 10px auto;
-  text-align: center;
-  display: block;
-  max-width: 600px;
-}
-
-.menu-price {
-  font-size: 24px;
-  color: #333;
-  margin: 20px 0;
-}
-
-.course-detail {
-  margin: 40px 0;
-  text-align: center;
-}
-
-.course-detail h3 {
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 10px 0;
-}
-
-.course-detail p {
-  font-size: 15px;
-  color: #666;
-  margin: 8px auto;
-  max-width: 600px;
-  text-align: center;
-  line-height: 1.8;
-}
-
-.course-includes {
-  font-size: 14px;
-  color: #666;
-  margin: 20px 0;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
-}
-
+/* メニュー画像 */
 .menu-images {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 30px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .menu-images img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
+  transition: transform 0.3s;
 }
 
-/* スライドショー */
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.slideshow {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
-/* 地図コンテナ */
-.map-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-}
-
-/* accessページのスタイル */
-.access-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.access-info {
-  text-align: left;
-  margin-bottom: 2rem;
-}
-
-.access-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.access-info p {
-  margin-bottom: 0.5rem;
-}
-
-/* aboutページのスタイル */
-.about-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.about-content {
-  text-align: left;
-}
-
-.about-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.about-content p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-}
-
-/* About us画像セクション */
-.about-images {
-  padding: 20px;
-  text-align: center;
-}
-
-.image-gallery {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.image-item {
-  width: 300px;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-.image-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.image-item:hover img {
+.menu-images img:hover {
   transform: scale(1.05);
 }
 
-.text-content {
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+/* マップコンテナ */
+.map-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.text-content h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-  font-weight: bold;
-  text-align: left;
-}
-
-.text-content p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #555;
-  text-align: left;
-}
-
-/* Reservationセクション */
-.reservation {
-  padding: 40px 20px;
-}
-
-.reservation h1,
-.reservation > p {
-  text-align: center;
-}
-
-.reservation h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.reservation p {
+/* 予約情報 */
+.reservation-info {
+  margin-top: 20px;
   font-size: 1.2rem;
-  margin-bottom: 30px;
 }
 
-/* Contact情報のスタイル */
-.contact-info {
-  margin: 0 auto 30px auto;
-  max-width: 600px;
-  text-align: left;
-}
-
-.contact-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: left;
-}
-
-.contact-info .contact-detail {
-  font-size: 1rem;
-  margin: 5px 0;
-  padding-left: 20px;
-}
-
-.contact-info p {
-  text-align: left;
-  margin: 5px 0;
-  padding-left: 20px;
-}
-
-.contact-info a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-  color: #0056b3;
-}
-
-/* Reservation Policyのスタイル */
-.reservation-policy {
-  margin: 0 auto;
-  max-width: 600px;
-  text-align: left;
-}
-
-.reservation-policy h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: left;
-}
-
-.reservation-policy ul {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-.reservation-policy li {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-/* ハンバーガーメニュー用のスタイル */
-.hamburger {
-  display: none;
-  cursor: pointer;
-  padding: 10px;
-  position: fixed;
-  right: 20px;
-  top: 10px;
-  z-index: 1001;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 2px;
-  background-color: #333;
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
+/* モバイル対応 */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  nav ul {
+  header nav ul {
     display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.9);
     position: fixed;
-    top: 0;
+    top: 60px;
     right: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: #f8f8f8;
-    padding: 60px 20px 20px;
+    width: 200px;
+    padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   }
-
-  nav ul.active {
-    display: block;
+  header nav ul.active {
+    display: flex;
   }
-
-  nav ul li {
-    margin: 15px 0;
-    text-align: left;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  section h1 {
-    font-size: 1.8rem;
-  }
-
-  section p {
-    font-size: 0.9rem;
-  }
-
-  .slideshow {
-    height: 300px;
-  }
-
-  .menu-section {
-    padding: 0 15px;
-  }
-
-  .menu-category {
-    margin-bottom: 60px;
-  }
-
-  .course-detail {
-    padding: 0;
-  }
-
-  .menu-images {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .map-container {
-    padding: 0 10px;
-  }
-  
-  .map-container iframe {
-    height: 300px;
+  .hamburger {
+    display: flex;
   }
 }
