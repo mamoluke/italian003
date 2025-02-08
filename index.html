@@ -35,7 +35,7 @@
 
   <!-- Main content sections -->
   <main>
-    <!-- About Us section with slider -->
+    <!-- About Us section with slider filling more of the page -->
     <section id="about" class="section">
       <div class="content">
         <h1 class="animate">About Us</h1>
@@ -46,22 +46,34 @@
       </div>
     </section>
 
-    <!-- Menu section with detailed modal -->
+    <!-- Menu section with course details always visible -->
     <section id="menu" class="section">
       <div class="content">
         <h1 class="animate">Menu</h1>
         <p class="animate">Please enjoy our specially selected courses for today.</p>
-        <div class="menu-images animate">
-          <!-- data-menu 属性でそれぞれのメニュー詳細を識別 -->
-          <img src="images/lunch1.png" alt="Menu Image 1" data-menu="menu1">
-          <img src="images/lunch2.png" alt="Menu Image 2" data-menu="menu2">
-        </div>
-        <div class="menu-description animate">
-          <h2>Course Structure</h2>
-          <p>
-            Our course menus are carefully crafted with an appetizer, main course, and dessert paired with selected wines.
-            Please hover over or click the images above to see the detailed course menu.
-          </p>
+        <div class="menu-courses animate">
+          <div class="menu-course">
+            <img src="images/lunch1.png" alt="Course Menu 1">
+            <div class="course-details">
+              <h2>Course Menu 1</h2>
+              <ul>
+                <li>Appetizer: Seasonal Salad</li>
+                <li>Main Course: Pan-seared Fish with Vegetables</li>
+                <li>Dessert: Crème Brûlée</li>
+              </ul>
+            </div>
+          </div>
+          <div class="menu-course">
+            <img src="images/lunch2.png" alt="Course Menu 2">
+            <div class="course-details">
+              <h2>Course Menu 2</h2>
+              <ul>
+                <li>Appetizer: French Onion Soup</li>
+                <li>Main Course: Beef Bourguignon</li>
+                <li>Dessert: Chocolate Mousse</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -108,14 +120,6 @@
       </a>
     </div>
   </footer>
-
-  <!-- Modal for Menu Details -->
-  <div id="menu-detail-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <div class="menu-detail-content"></div>
-    </div>
-  </div>
 
   <script src="js/script.js"></script>
 </body>
