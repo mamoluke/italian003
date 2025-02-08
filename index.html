@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - French Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elegant French Restaurant</title>
+  <!-- Google Fonts: Playfair Display と Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- 背景オーバーレイとカスタムカーソル -->
+  <!-- 背景オーバーレイ（セクションごとに色が変化します） -->
   <div class="background-overlay"></div>
+  <!-- カスタムカーソル -->
   <div class="cursor"></div>
 
+  <!-- ヘッダー（固定＆モバイル用ハンバーガーメニュー付き） -->
   <header>
     <div class="hamburger">
       <span></span>
@@ -19,39 +25,79 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="access.html">Access</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="about.html">About us</a></li>
-        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#menu">メニュー</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#reservation">予約・問い合わせ</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- メインコンテンツ（各セクションは100vhで全画面表示） -->
   <main>
-    <!-- セクションに id="home" と animate クラスを付与 -->
-    <section id="home">
-      <h1 class="animate">Welcome to Our French Restaurant</h1>
-      <p class="animate">Experience the finest dining in an elegant atmosphere.</p>
-      <div class="slideshow-container">
-        <div class="slideshow">
-          <img src="images/restaurant_home_image1.png" alt="Elegant French Restaurant" class="slide" width="600" height="400">
-          <img src="images/restaurant_home_image2.png" alt="Refined Table Setup" class="slide" width="600" height="400">
+    <!-- About us セクション -->
+    <section id="about" class="section">
+      <div class="content">
+        <h1 class="animate">About us</h1>
+        <p class="animate">私たちの物語へようこそ。</p>
+      </div>
+    </section>
+
+    <!-- メニュー セクション -->
+    <section id="menu" class="section">
+      <div class="content">
+        <h1 class="animate">メニュー</h1>
+        <p class="animate">本日の特選メニューをご覧ください。</p>
+        <div class="menu-images animate">
+          <img src="images/menu1.png" alt="メニュー画像1">
+          <img src="images/menu2.png" alt="メニュー画像2">
+        </div>
+      </div>
+    </section>
+
+    <!-- アクセス セクション -->
+    <section id="access" class="section">
+      <div class="content">
+        <h1 class="animate">アクセス</h1>
+        <p class="animate">〒123-4567 東京都渋谷区○○町1-2-3</p>
+        <div class="map-container animate">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.123456789012!2d139.7000000!3d35.6895000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c1234567890%3A0xabcdef1234567890!2z44CSMjU5LTAwMDAg5p2x5Lqs6YO95p2x5Yy65YyX5Lqs6YO95LiK!5e0!3m2!1sja!2sjp!4v1587654321098!5m2!1sja!2sjp" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 予約・問い合わせ セクション -->
+    <section id="reservation" class="section">
+      <div class="content">
+        <h1 class="animate">予約・問い合わせ</h1>
+        <p class="animate">ご予約はお電話またはメールでお気軽にお問い合わせください。</p>
+        <div class="reservation-info animate">
+          <p><strong>電話:</strong> <a href="tel:+810123456789">+81-012-3456-789</a></p>
+          <p><strong>メール:</strong> <a href="mailto:info@frenchrestaurant.com">info@frenchrestaurant.com</a></p>
         </div>
       </div>
     </section>
   </main>
-  
+
+  <!-- フッター（ソーシャルリンク：Instagram と Twitter） -->
   <footer>
     <div class="social-links">
       <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
-        <img src="images/icon_instagram_mono.png" alt="Instagram" />
+        <img src="images/icon_instagram_mono.png" alt="Instagram">
       </a>
       <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
-        <img src="images/icon_twitter_mono.png" alt="Twitter" />
+        <img src="images/icon_twitter_mono.png" alt="Twitter">
       </a>
     </div>
   </footer>
+
   <script src="js/script.js"></script>
 </body>
 </html>
