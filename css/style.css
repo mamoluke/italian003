@@ -113,7 +113,7 @@ header nav ul li a:hover::after {
 
 /* Sections */
 .section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,59 +175,61 @@ footer .social-links img {
 .slider {
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Increased width */
+  height: 80vh; /* Slider fills 80% of viewport height */
+  max-width: 1000px;
   margin: 20px auto;
+  overflow: hidden;
 }
-
 .slider img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 80vh;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  transition: opacity 2s ease-in-out; /* Slower fade transition */
+  transition: opacity 2s ease-in-out;
 }
-
 .slider img.active {
   opacity: 1;
 }
 
-/* Menu images - reduced size */
-.menu-images {
-  margin-top: 20px;
+/* Menu Courses */
+.menu-courses {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-}
-
-.menu-images img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-
-.menu-images img:hover {
-  transform: scale(1.05);
-}
-
-/* Menu description */
-.menu-description {
+  gap: 40px;
   margin-top: 20px;
+}
+.menu-course {
+  max-width: 300px;
   text-align: left;
 }
-
-.menu-description h2 {
+.menu-course img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.menu-course img:hover {
+  transform: scale(1.05);
+}
+.course-details {
+  margin-top: 10px;
+}
+.course-details h2 {
   font-family: 'Playfair Display', serif;
   margin-bottom: 10px;
 }
-
-.menu-description p {
-  font-size: 1rem;
-  line-height: 1.5;
+.course-details ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+.course-details li {
+  margin-bottom: 5px;
 }
 
 /* Map container */
@@ -243,39 +245,6 @@ footer .social-links img {
 .reservation-info {
   margin-top: 20px;
   font-size: 1.2rem;
-}
-
-/* Modal for Menu Details */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 1200;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
 }
 
 /* Responsive (mobile) */
@@ -296,5 +265,9 @@ footer .social-links img {
   }
   .hamburger {
     display: flex;
+  }
+  .menu-courses {
+    flex-direction: column;
+    align-items: center;
   }
 }
