@@ -1,133 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ハンバーガーメニューの制御（全ページ共通）
+  // ハンバーガーメニューの切替（モバイル対応）
   const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('nav ul');
-
-  if (hamburger && nav) {
+  const navUl = document.querySelector('nav ul');
+  if (hamburger && navUl) {
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
-      nav.classList.toggle('active');
+      navUl.classList.toggle('active');
     });
-
-    document.querySelectorAll('nav a').forEach(link => {
+    // メニュー項目クリックでメニューを閉じる
+    document.querySelectorAll('nav ul li a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
-        nav.classList.remove('active');
+        navUl.classList.remove('active');
       });
     });
   }
-
-  // スライドショー関連のコード（index.htmlのみ）
-  const slides = document.querySelectorAll(".slide");
-  if (slides.length > 0) {
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide) => {
-        slide.classList.remove("active");
-      });
-      slides[index].classList.add("active");
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    // 最初のスライドを表示
-    slides[0].classList.add("active");
-
-    // 3秒ごとにスライドを切り替える
-    setInterval(nextSlide, 3000);
-  }
-
-  // 画像ホバー効果（about.htmlのみ）
-  const imageItems = document.querySelectorAll(".image-item");
-  const hoverTitle = document.querySelector(".hover-title");
-  const hoverDescription = document.querySelector(".hover-description");
-  const hoverContent = document.querySelector(".image-hover-content");
-
-  if (imageItems.length > 0 && hoverTitle && hoverDescription && hoverContent) {
-    imageItems.forEach((item) => {
-      item.addEventListener("mouseover", () => {
-        const title = item.getAttribute("data-title");
-        const description = item.getAttribute("data-description");
-        hoverTitle.textContent = title;
-        hoverDescription.textContent = description;
-        hoverContent.style.opacity = "1";
-        hoverContent.style.visibility = "visible";
-      });
-
-      item.addEventListener("mouseleave", () => {
-        hoverContent.style.opacity = "0";
-        hoverContent.style.visibility = "hidden";
-      });
-    });
-  }
-
-  // スクロール時のヘッダースタイル変更（全ページ共通）
-  const header = document.querySelector("header");
-  if (header) {
-    document.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        header.style.backgroundColor = "#ffffff";
-        header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-      } else {
-        header.style.backgroundColor = "transparent";
-        header.style.boxShadow = "none";
-      }
-    });
-  }
-
+  
   // カスタムカーソルの動作
   const cursor = document.querySelector('.cursor');
   document.addEventListener('mousemove', (e) => {
     cursor.style.top = e.clientY + 'px';
     cursor.style.left = e.clientX + 'px';
   });
-
-  // IntersectionObserverでセクションの背景色とテキストアニメーションを制御
+  
+  // IntersectionObserverで各セクションの表示と背景色の切替を制御
+  const sections = document.querySelectorAll('.section');
   const backgroundOverlay = document.querySelector('.background-overlay');
-  const sections = document.querySelectorAll('main section');
-
-  // セクションごとの背景色マッピング
-  const sectionColors = {
-    home: '#FFFFF0',       // アイボリー
-    about: '#FFF8E7',      // やや暖かみのあるアイボリー
-    gallery: '#FFF8E7',    // 同じ色で統一
+  
+  // セクションごとの背景色設定（お好みで調整してください）
+  const bgColors = {
+    about: '#FFFFF0',      // アイボリー
+    menu: '#FFF8E7',       // やや暖かみのあるアイボリー
     access: '#FFF4DC',     // 明るいベージュ
-    menu: '#FFF0D1',       // ソフトなアイボリー
-    reservation: '#FFF4E1' // 例: 少し違う暖色
+    reservation: '#FFF0D1' // ソフトなアイボリー
   };
-
+  
   const observerOptions = {
     threshold: 0.5
   };
-
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        if (sectionColors[id]) {
-          backgroundOverlay.style.backgroundColor = sectionColors[id];
+        if (bgColors[id]) {
+          backgroundOverlay.style.backgroundColor = bgColors[id];
         }
-        // アニメーションのトリガー
-        const animElements = entry.target.querySelectorAll('.animate');
-        animElements.forEach((el, index) => {
+        // 表示される要素に対してアニメーションを付与
+        const animElems = entry.target.querySelectorAll('.animate');
+        animElems.forEach((el, index) => {
           setTimeout(() => {
             el.classList.add('visible');
           }, index * 200);
         });
       } else {
-        const animElements = entry.target.querySelectorAll('.animate');
-        animElements.forEach(el => {
+        // セクションが見えなくなったときはvisibleクラスを除去
+        const animElems = entry.target.querySelectorAll('.animate');
+        animElems.forEach(el => {
           el.classList.remove('visible');
         });
       }
     });
   }, observerOptions);
-
+  
   sections.forEach(section => {
     observer.observe(section);
   });
+  
+  // ※画像が表示されない場合の確認ポイント：
+  // 1. HTMLで指定しているsrc属性（例："images/menu1.png"）と実際のファイル名が大文字小文字も含めて一致しているか。
+  // 2. HTMLファイルとimagesフォルダの相対パスが正しいか。
+  // 3. ブラウザのデベロッパーツールでエラーが出ていないか確認してください。
 });
