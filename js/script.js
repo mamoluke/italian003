@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ハンバーガーメニューの切替（モバイル対応）
+  // Hamburger menu toggle for mobile
   const hamburger = document.querySelector('.hamburger');
   const navUl = document.querySelector('nav ul');
   if (hamburger && navUl) {
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hamburger.classList.toggle('active');
       navUl.classList.toggle('active');
     });
-    // メニュー項目クリックでメニューを閉じる
+    // Close menu on link click
     document.querySelectorAll('nav ul li a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -16,23 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  // カスタムカーソルの動作
+  // Custom cursor movement
   const cursor = document.querySelector('.cursor');
   document.addEventListener('mousemove', (e) => {
     cursor.style.top = e.clientY + 'px';
     cursor.style.left = e.clientX + 'px';
   });
   
-  // IntersectionObserverで各セクションの表示と背景色の切替を制御
+  // IntersectionObserver for section animations and background color change
   const sections = document.querySelectorAll('.section');
   const backgroundOverlay = document.querySelector('.background-overlay');
   
-  // セクションごとの背景色設定（お好みで調整してください）
+  // Background colors for each section (customize as desired)
   const bgColors = {
-    about: '#FFFFF0',      // アイボリー
-    menu: '#FFF8E7',       // やや暖かみのあるアイボリー
-    access: '#FFF4DC',     // 明るいベージュ
-    reservation: '#FFF0D1' // ソフトなアイボリー
+    about: '#FFFFF0',      // Ivory
+    menu: '#FFF8E7',       // Warm ivory
+    access: '#FFF4DC',     // Light beige
+    reservation: '#FFF0D1' // Soft ivory
   };
   
   const observerOptions = {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bgColors[id]) {
           backgroundOverlay.style.backgroundColor = bgColors[id];
         }
-        // 表示される要素に対してアニメーションを付与
+        // Animate elements within the section
         const animElems = entry.target.querySelectorAll('.animate');
         animElems.forEach((el, index) => {
           setTimeout(() => {
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }, index * 200);
         });
       } else {
-        // セクションが見えなくなったときはvisibleクラスを除去
         const animElems = entry.target.querySelectorAll('.animate');
         animElems.forEach(el => {
           el.classList.remove('visible');
@@ -67,8 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
   
-  // ※画像が表示されない場合の確認ポイント：
-  // 1. HTMLで指定しているsrc属性（例："images/menu1.png"）と実際のファイル名が大文字小文字も含めて一致しているか。
-  // 2. HTMLファイルとimagesフォルダの相対パスが正しいか。
-  // 3. ブラウザのデベロッパーツールでエラーが出ていないか確認してください。
+  // Slider functionality for About Us section
+  const slides = document.querySelectorAll('.slider .slide');
+  let currentSlide = 0;
+  if (slides.length > 0) {
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 3000); // Change slide every 3 seconds
+  }
 });
